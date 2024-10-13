@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark container border-bottom py-3">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">File Storage</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto d-flex gap-4">
+          <li class="nav-item">
+            <button type="button" class="btn btn-outline-primary me-2" data-bs-toggle="modal"
+              data-bs-target="#folderModal">
+              <i class="fas fa-folder"></i>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+              data-bs-target="#fileUploadModal">
+              <i class="fas fa-file"></i>
+            </button>
+          </li>
+          <li class="nav-item">
+            <a href="/home/logout" class="nav-link">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="modal fade" id="folderModal" tabindex="-1" aria-labelledby="folderModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="folderModalLabel">Create a New Folder</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="folderForm" action="/home/folder/create" method="post">
+            <div class="mb-3">
+              <label for="folderName" class="form-label">Folder Name</label>
+              <input type="text" class="form-control" id="folderName" name="folderName" placeholder="Enter folder name"
+                required>
+            </div>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" form="folderForm">Create Folder</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="fileUploadModal" tabindex="-1" aria-labelledby="fileUploadModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="fileUploadModalLabel">Upload a File (Image or Video)</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/home/file/create" method="post" id="fileUploadForm" enctype="multipart/form-data">
+            <div class="mb-3">
+              <label for="fileInput" class="form-label">Select a file</label>
+              <input type="file" class="form-control" id="fileInput" name="file" required>
+            </div>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" form="fileUploadForm">Upload File</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -39,6 +39,6 @@ model File{
   createdAt DateTime @default(now())
   userId Int
   user User @relation(fields: [userId], references: [id])
-  folderId Int
-  folder Folder @relation(fields: [folderId], references: [id])
+  folderId Int?
+  folder Folder? @relation(fields: [folderId], references: [id])
 }

@@ -14,6 +14,7 @@ const app = express();
 app.set("views", path.join(import.meta.dirname, "views"));
 app.set("view engine", "ejs");
 
+app.use(express.static(path.join(import.meta.dirname, "static")));
 app.use(express.urlencoded({ extended: true }));
 app.use(expressSession({
     secret: "herimanjaka",
@@ -27,5 +28,5 @@ app.use("/signup", signupRouter);
 app.use("/signin", signinRouter);
 app.use("/home", homeRouter);
 
-const PORT = process.env.PORT ?? 3000
+const PORT = process.env.PORT ?? 4000
 app.listen(PORT, () => console.log(`Server listening at port: ${PORT}`));

@@ -1,3 +1,22 @@
 <%- include("partials/header.ejs") %>
-<p>Welcome</p>
-<%- include("partials/footer.ejs") %>
+  <%- include("partials/nav.ejs") %>
+
+    <% if (locals.folders.length !== 0 || locals.files.length !== 0) { %>
+      <div class="container my-5 d-flex gap-5 flex-wrap">
+        <% if (locals.folders) { %>
+            <% for (let folder of folders){ %>
+                <%- include("partials/folder.ejs", {folder}) %>
+            <% } %>
+        <%  } %>
+
+        <% if (locals.files) { %>
+          <% for (let file of files){ %>
+            <%- include("partials/file.ejs", {file}) %>
+          <% } %> 
+        <%  } %>
+
+      </div>
+    <% }else{ %>
+        <p class="text-center mt-5">You haven't upload any file or create any folder yet.</p>
+    <% } %>
+          <%- include("partials/footer.ejs") %>
